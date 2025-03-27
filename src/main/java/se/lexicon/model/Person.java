@@ -7,7 +7,7 @@ package se.lexicon.model;
 public class Person {
     // todo: needs completion
     // creates fields for person class
-    private static int sequencer = 0;
+    private static int sequencer = 0000;
     private int id;
     private String firstName;
     private String lastName;
@@ -64,7 +64,7 @@ public class Person {
             throw new IllegalStateException("This book was not borrowed");
 
         book.setAvailable(true);
-        System.out.println(firstName + " " + lastName + "returned the book " + book.getTitle());
+        System.out.println(firstName + " " + lastName + " returned the book " + book.getTitle());
 
     }
 
