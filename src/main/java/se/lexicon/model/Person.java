@@ -5,9 +5,10 @@ package se.lexicon.model;
  * to manage personal details and interactions with the library system.
  */
 public class Person {
-    // todo: needs completion
+
+    //static sequencer for generating unique id
+    private static int sequencer = 0;
     // creates fields for person class
-    private static int sequencer = 0000;
     private int id;
     private String firstName;
     private String lastName;
@@ -24,7 +25,7 @@ public class Person {
         this.lastName = lastName;
     }
 
-    //create getters
+    //create getters for fields
     public int getId() {
         return id;
     }
@@ -37,36 +38,48 @@ public class Person {
         return lastName;
     }
 
-    // create method for nextId
+    // create method to get the next Id
 
     public static int getNextId() {
         return sequencer + 1;
     }
+    //create method to loan a book
 
     public void loanBook(Book book) {
-        //prevent book from  being default (null)
+        //check if the book is available before borrowing
         if (book == null) {
-            throw new IllegalArgumentException("Book cannot be null.");
+            System.out.println("Book cannot be null.");
+            return;
         }
         // prevent borrowing unavailable book
-        if (!book.isAvailable()) {
-            throw new IllegalStateException("This book is already borrowed.");
+        if (!book.isAvailable()){
+            System.out.println("This book is already borrowed.");
+            return;
         }
+        //marks book as borrow if available
         book.setAvailable(false);
-        System.out.println(firstName + " " + lastName + "borrowed the book " + book.getTitle());
+        System.out.println(firstName + " " + lastName + " borrowed the book " + book.getTitle());
     }
+    //create method to return a book
 
     public void returnBook(Book book) {
-        //prevent borrowing returning book that was not borrowed
-        if (book == null) throw new IllegalArgumentException("Book cannot be null.");
+        //check if book is null or already returned
+        if (book == null) {
+            System.out.println("Book cannot be null.");
+            return;
+        }
 
-        if (book.isAvailable())
-            throw new IllegalStateException("This book was not borrowed");
-
+        if (book.isAvailable()) {
+            System.out.println("This book was not borrowed");
+            return;
+        }
+        //mark book as available after returning
         book.setAvailable(true);
         System.out.println(firstName + " " + lastName + " returned the book " + book.getTitle());
 
     }
+
+    //create method to get person information
 
     public String getPersonInformation() {
         return "ID: " + id + ", Name: " + firstName + " " + lastName;

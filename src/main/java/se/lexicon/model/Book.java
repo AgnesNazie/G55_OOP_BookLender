@@ -9,38 +9,38 @@ import java.util.UUID;
  */
 public class Book {
     // create fields for book class
-
     private String id;
     private String title;
     private String author;
     private boolean available;
 
-    //creates constructors for book class
+    //creates constructors for book class (without borrower)
 
     public Book(String title, String author) {
         if (title == null || title.trim().isEmpty() || author == null || author.trim().isEmpty()) {
-            throw  new IllegalArgumentException("Title and author cannot be empty.");
+            System.out.println("Title and Author cannot be empty");
+            return;
         }
         this.id = generateBookId();
         this.title = title;
         this.author = author;
+        this.available = true;
     }
 
-    //create another constructor for book class
+    //create another constructor for book class(with borrower)
 
     public Book(String title, String author, boolean available) {
+        if (title == null || title.trim().isEmpty() || author == null || author.trim().isEmpty()) {
+            System.out.println("Title and Author cannot be empty");
+            return;
+        }
         this.id = generateBookId();
         this.title = title;
         this.author = author;
         this.available = available;
     }
 
-    //create setters
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    // create getters
+    // create getters for fields
     public String getId() {
         return id;
     }
@@ -53,10 +53,17 @@ public class Book {
     public boolean isAvailable() {
         return available;
     }
+    //create setter for availability
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+    //create methods to generate unique id for book
 
     private String generateBookId() {
         return "B-" + UUID.randomUUID().toString();
     }
+    //create method to get information for the book
 
     public String getBookInformation() {
         return "ID:" + id + ", Title: " + title + ", Author: " + author + ", Available: " + available;
