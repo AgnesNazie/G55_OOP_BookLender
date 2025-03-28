@@ -13,6 +13,7 @@ public class Book {
     private String title;
     private String author;
     private boolean available;
+    private Person borrower;
 
     //creates constructors for book class (without borrower)
 
@@ -29,7 +30,7 @@ public class Book {
 
     //create another constructor for book class(with borrower)
 
-    public Book(String title, String author, boolean available) {
+    public Book(String title, String author,Person borrower) {
         if (title == null || title.trim().isEmpty() || author == null || author.trim().isEmpty()) {
             System.out.println("Title and Author cannot be empty");
             return;
@@ -37,7 +38,8 @@ public class Book {
         this.id = generateBookId();
         this.title = title;
         this.author = author;
-        this.available = available;
+        this.available = false;
+        this.borrower = borrower;
     }
 
     // create getters for fields

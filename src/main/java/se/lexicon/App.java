@@ -23,7 +23,11 @@ public class App {
 
         // Simulate borrowing a book
         person3.loanBook(book3);
+        person1.loanBook(book1);
+        person1.loanBook(book2);
         System.out.println(book3.getBookInformation());
+        System.out.println(book1.getBookInformation());
+        System.out.println(book2.getBookInformation());
 
         //Simulate returning a book
         person1.returnBook(book1);
