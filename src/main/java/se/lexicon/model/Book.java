@@ -3,6 +3,7 @@ package se.lexicon.model;
 
 import java.util.UUID;
 
+
 /**
  * This class represents a Book model with properties and methods
  * to manage book-related information and operations.
@@ -38,7 +39,7 @@ public class Book {
         this.id = generateBookId();
         this.title = title;
         this.author = author;
-        this.available = false;
+        this.available = borrower == null ? true : false;
         this.borrower = borrower;
     }
 
@@ -51,6 +52,10 @@ public class Book {
     }
     public String getAuthor() {
         return author;
+    }
+    // Getter for the borrower
+    public Person getBorrower() {
+        return borrower;
     }
     public boolean isAvailable() {
         return available;
@@ -68,6 +73,15 @@ public class Book {
     //create method to get information for the book
 
     public String getBookInformation() {
-        return "ID:" + id + ", Title: " + title + ", Author: " + author + ", Available: " + available;
+        // Using StringBuilder for cleaner string formatting
+        StringBuilder info = new StringBuilder();
+        info.append("ID:  ").append(id)
+                .append(", Title: ").append(title)
+                .append(", Author: ").append(author)
+                .append(", Available: ").append(available);
+        if (borrower != null) {
+            info.append(", Borrowed by: ").append(borrower.getFirstName()).append(" ").append(borrower.getLastName());
+        }
+        return info.toString();
     }
 }
