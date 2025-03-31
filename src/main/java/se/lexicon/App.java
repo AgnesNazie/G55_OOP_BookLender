@@ -32,8 +32,8 @@ public class App {
 
         System.out.println("===============================================================");
         // Person borrows a book
-        person1.loanBook(bookList.get(0)); // Agnes borrows "Java Programming"
-        person2.loanBook(bookList.get(1)); // Che borrows "Clean Code"
+        person1.loanBook(bookList.get(0));
+        person2.loanBook(bookList.get(1));
 
         System.out.println("===============================================================");
         // Display updated book information
@@ -44,7 +44,8 @@ public class App {
 
         System.out.println("==============================================================");
         // Person returns a book
-        person1.returnBook(bookList.get(0)); // Agnes returns "Java Programming"
+        person1.returnBook(bookList.get(0));
+        person3.returnBook(bookList.get(2));
 
         System.out.println("==============================================================");
 
